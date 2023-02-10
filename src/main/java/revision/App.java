@@ -58,6 +58,15 @@ public final class App {
 
             EmployeeService es = new EmployeeService();
             List<Employee> empList = es.generateEmployees();
+
+            CSVService csvSvc = new CSVService();
+            // write list of employee to CSV
+            csvSvc.writeToCSV(empList, dirFileName);
+
+            // read list of employee from CSV
+            List<Employee> csvEmpList = csvSvc.readFromCSV(dirFileName);
+            csvEmpList.forEach(emp -> System.out.println(emp));
+
             
             // clear the outputstream
             // force data to store to file
